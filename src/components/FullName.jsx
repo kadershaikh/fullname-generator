@@ -24,6 +24,8 @@ export default function FullName() {
         setFullName('');
       }
     };
+
+    const isFormValid = firstName && lastName;
   
     return (
       <div>
@@ -31,15 +33,15 @@ export default function FullName() {
         <form onSubmit={handleSubmit}>
           <label>
             First Name:
-            <input type="text" value={firstName} onChange={handleFirstNameChange} required />
+            <input type="text" value={firstName} onChange={handleFirstNameChange} {...(isFormValid ? { required: true } : {})} />
           </label>
           <br />
           <label>
             Last Name:
-            <input type="text" value={lastName} onChange={handleLastNameChange} required />
+            <input type="text" value={lastName} onChange={handleLastNameChange} {...(isFormValid ? { required: true } : {})} />
           </label>
           <br />
-          <button type="submit" disabled={!bothFieldsFilled}>Submit</button>
+          <button type="submit" >Submit</button>
         </form>
         {fullName && <p>Full Name: {fullName}</p>}
       </div>
