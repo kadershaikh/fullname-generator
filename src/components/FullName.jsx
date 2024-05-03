@@ -16,8 +16,10 @@ export default function FullName() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (firstName && lastName) {
-      setFullName(`${firstName} ${lastName}`);
-    }
+        setFullName(`${firstName} ${lastName}`);
+      } else {
+        setFullName('');
+      }
   };
 
   return (
@@ -26,12 +28,12 @@ export default function FullName() {
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
-          <input type="text" required value={firstName} onChange={handleFirstNameChange} />
+          <input type="text" value={firstName} onChange={handleFirstNameChange} required/>
         </label>
         <br />
         <label>
           Last Name:
-          <input type="text" required value={lastName} onChange={handleLastNameChange} />
+          <input type="text" value={lastName} onChange={handleLastNameChange} required/>
         </label>
         <br />
         <button type="submit">Submit</button>
